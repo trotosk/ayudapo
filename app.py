@@ -1,6 +1,7 @@
 import streamlit as st
 import anthropic
 import os
+from templates import get_general_template, get_code_template, get_criterios_Aceptacion_template
 
 # Configurar la página
 st.set_page_config(page_title="Chat con Claude", page_icon="🤖")
@@ -10,11 +11,31 @@ st.sidebar.title("Configuración")
 #api_key = st.sidebar.text_input("🔑 Clave API de Anthropic", type="password")
 api_key = os.getenv("ANTHROPIC_API_KEY")
 
+def generate_response(template_type="PO Casos exito"):
+# Definir templates para diferentes casos de uso
+# Selecci贸n de template
+    if template_seleccionado == "General":
+        template = get_general_template()
+    elif template_seleccionado == "PO Casos exito":
+        template = get_criterios_Aceptacion_template()
+    elif template_seleccionado == "Programador Python":
+        template = get_code_template()
+
+    return template
+
 model = st.sidebar.selectbox(
     "🤖 Modelo Claude",
     options=["claude-3-7-sonnet-20250219", "claude-3-opus-20240229", "claude-3-sonnet-20240229", "claude-3-haiku-20240307"],
     index=0  # por defecto: Sonnet
 )
+
+# Selecci贸n de template
+template_seleccionado = st.sidebar.selectbox(
+    "Tipo de consulta",
+    options=["General", "PO Casos exito", "Programador Python"],
+    index=0  # por defecto: General
+)
+
 
 # Inicializar historial de mensajes si no existe
 if "messages" not in st.session_state:
@@ -29,8 +50,13 @@ for msg in st.session_state.messages:
 
 # Entrada del usuario
 if prompt := st.chat_input("Escribe tu mensaje..."):
+    # Formatear el prompt seg煤n el template seleccionado
+    prompt_template = generate_response(template_seleccionado)
+    
+    # Reemplazar variables en el template
+    prompt_final = prompt_template.format(input=prompt)
     # Mostrar mensaje del usuario
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.session_state.messages.append({"role": "user", "content": prompt, "content_final": prompt_final})
     with st.chat_message("user"):
         st.markdown(prompt)
 
@@ -46,7 +72,7 @@ if prompt := st.chat_input("Escribe tu mensaje..."):
                     model=model,
                     max_tokens=1024,
                     messages=[
-                        {"role": m["role"], "content": m["content"]} for m in st.session_state.messages
+                        {"role": m["role"], "content": m["content_final"]} for m in st.session_state.messages
                     ]
                 )
 
@@ -58,7 +84,7 @@ if prompt := st.chat_input("Escribe tu mensaje..."):
                 st.markdown(answer)
 
             # Guardar en historial
-            st.session_state.messages.append({"role": "assistant", "content": answer})
+            st.session_state.messages.append({"role": "assistant", "content": answer, "content_final": prompt_final})
 
         except Exception as e:
             st.error(f"❌ Error al llamar a la API: {e}")
