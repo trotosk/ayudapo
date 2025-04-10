@@ -1,12 +1,14 @@
 import streamlit as st
 import anthropic
+import os
 
 # Configurar la página
 st.set_page_config(page_title="Chat con Claude", page_icon="🤖")
 
 # Sidebar para la clave API y selección de modelo
 st.sidebar.title("Configuración")
-api_key = st.sidebar.text_input("🔑 Clave API de Anthropic", type="password")
+#api_key = st.sidebar.text_input("🔑 Clave API de Anthropic", type="password")
+api_key = os.getenv("ANTHROPIC_API_KEY")
 
 model = st.sidebar.selectbox(
     "🤖 Modelo Claude",
@@ -33,7 +35,7 @@ if prompt := st.chat_input("Escribe tu mensaje..."):
         st.markdown(prompt)
 
     if not api_key:
-        st.error("⚠️ Debes ingresar tu clave API en la barra lateral.")
+        st.error("⚠️ Clave incorrecta. Debes ingresar tu clave API.")
     else:
         try:
             client = anthropic.Anthropic(api_key=api_key)
