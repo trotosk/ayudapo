@@ -23,11 +23,16 @@ def generate_response(template_type="PO Casos exito"):
 
     return template
 
+
 model = st.sidebar.selectbox(
     "🤖 Modelo Claude",
     options=["claude-3-7-sonnet-20250219", "claude-3-opus-20240229", "claude-3-sonnet-20240229", "claude-3-haiku-20240307"],
     index=0  # por defecto: Sonnet
 )
+
+  # Perimetros de generacion
+temperatura = st.sidebar.slider("Temperatura", min_value=0.0, max_value=1.0, value=0.7, step=0.1)
+max_tokens = st.sidebar.slider("Maximo de tokens", min_value=100, max_value=4096, value=1000, step=100)
 
 # Selecci贸n de template
 template_seleccionado = st.sidebar.selectbox(
@@ -70,7 +75,8 @@ if prompt := st.chat_input("Escribe tu mensaje..."):
             with st.spinner("Claude está pensando..."):
                 response = client.messages.create(
                     model=model,
-                    max_tokens=1024,
+                    max_tokens=max_tokens,
+                    temperature=temperatura,
                     messages=[
                         {"role": m["role"], "content": m["content_final"]} for m in st.session_state.messages
                     ]
