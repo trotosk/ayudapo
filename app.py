@@ -4,7 +4,7 @@ import os
 from templates import get_general_template, get_code_template, get_criterios_Aceptacion_template
 
 # Configurar la página
-st.set_page_config(page_title="Chat con Claude", page_icon="🤖")
+st.set_page_config(page_title="AyudaPO", page_icon="🤖")
 
 # Sidebar para la clave API y selección de modelo
 st.sidebar.title("Configuración")
@@ -13,7 +13,7 @@ api_key = os.getenv("ANTHROPIC_API_KEY")
 
 def generate_response(template_type="PO Casos exito"):
 # Definir templates para diferentes casos de uso
-# Selecci贸n de template
+# Seleccion de template
     if template_seleccionado == "General":
         template = get_general_template()
     elif template_seleccionado == "PO Casos exito":
@@ -32,7 +32,7 @@ model = st.sidebar.selectbox(
 
   # Perimetros de generacion
 temperatura = st.sidebar.slider("Temperatura", min_value=0.0, max_value=1.0, value=0.7, step=0.1)
-max_tokens = st.sidebar.slider("Maximo de tokens", min_value=100, max_value=4096, value=1000, step=100)
+max_tokens = st.sidebar.slider("Maximo de tokens", min_value=100, max_value=4096, value=1500, step=100)
 
 # Selecci贸n de template
 template_seleccionado = st.sidebar.selectbox(
@@ -46,7 +46,7 @@ template_seleccionado = st.sidebar.selectbox(
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-st.title("💬 Chat con Claude (Anthropic)")
+st.title("💬 Chat AyudaPO")
 
 # Mostrar historial de chat
 for msg in st.session_state.messages:
