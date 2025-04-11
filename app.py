@@ -4,7 +4,7 @@ import os
 from templates import get_general_template, get_code_template, get_criterios_Aceptacion_template
 
 # Configurar la página
-st.set_page_config(page_title="AyudaPO", page_icon="🤖")
+st.set_page_config(page_title="AyudaPO", page_icon="🔗")
 
 # Sidebar para la clave API y selección de modelo
 st.sidebar.title("Configuración")
