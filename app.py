@@ -1,7 +1,7 @@
 import streamlit as st
 import anthropic
 import os
-from templates import get_general_template, get_code_template, get_criterios_Aceptacion_template, get_criterios_epica_template
+from templates import get_general_template, get_code_template, get_criterios_Aceptacion_template, get_criterios_epica_template, get_criterios_mejora_template
 
 # Configurar la página
 st.set_page_config(page_title="AyudaPO", page_icon="🔗")
@@ -22,6 +22,8 @@ def generate_response(template_type="PO Casos exito"):
         template = get_code_template()
     elif template_seleccionado == "PO Definicion epica":
         template = get_criterios_epica_template()
+    elif template_seleccionado == "PO Definicion mejora tecnica":
+        template = get_criterios_mejora_template()
 
     return template
 
