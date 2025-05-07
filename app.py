@@ -41,7 +41,7 @@ max_tokens = st.sidebar.slider("Maximo de tokens", min_value=100, max_value=4096
 # Selecci贸n de template
 template_seleccionado = st.sidebar.selectbox(
     "Tipo de consulta",
-    options=["General", "PO Casos exito", "PO Definicion epica", "Programador Python"],
+    options=["General", "PO Casos exito", "PO Definicion epica", "PO Definicion mejora tecnica", "Programador Python"],
     index=0  # por defecto: General
 )
 
