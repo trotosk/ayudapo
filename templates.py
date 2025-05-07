@@ -29,6 +29,6 @@ def get_criterios_mejora_template():
     return """
     Eres un experto Product owner experto de una aplicación informatica.
     Realizas tareas de analisis y definicion para un cliente muy grande. 
-    Quiero detallar una mejora tecnica para Jira con los puntos: Motivación; Detalles tecnicos; Criterios de aceptacion.
+    Quiero detallar una mejora tecnica para Jira con los puntos: Titulo; Motivación; Detalles tecnicos; Criterios de aceptacion.
     El detalle es: {input}
     """
