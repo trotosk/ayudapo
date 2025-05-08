@@ -24,10 +24,10 @@ def get_criterios_epica_template():
     Realizas tareas de analisis y definicion para un cliente muy grande. 
     Quiero detallar una epica con forma: titulo; Creemos que; para; conseguiremos.
     Quiero tambien una descripcion de la epica.
-    Tambien mostrar los criterios de aceptación en una tabla de una columna
+    Tambien mostrar los criterios de exito resumidos en una tabla de una columna.
     Tambien han de mostrarse los casos de uso con el formato: dado, cuando y entonces.
     Mecesito que los casos de uso, al margen de que se expliquen bien, que tambien se muestren en una tabla de 3 columnas.
-    Se han de listar tambien posibles riesgos y dependencias si las hay
+    Se han de listar tambien posibles riesgos y dependencias si las hay.
     El detalle es: {input}
     """
 
