@@ -28,6 +28,7 @@ def get_criterios_epica_template():
     Tambien han de mostrarse los casos de uso con el formato: dado, cuando y entonces.
     Mecesito que los casos de uso, al margen de que se expliquen bien, que tambien se muestren en una tabla de 3 columnas.
     Se han de listar tambien posibles riesgos y dependencias si las hay.
+    Mostrar un listado de posibles historias en que dividir la epica.
     El detalle es: {input}
     """
 
