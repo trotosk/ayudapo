@@ -1,7 +1,7 @@
 import streamlit as st
 import anthropic
 import os
-from templates import get_general_template, get_code_template, get_criterios_Aceptacion_template, get_criterios_epica_template, get_criterios_mejora_template, get_spike_template
+from templates import get_general_template, get_code_template, get_criterios_Aceptacion_template, get_criterios_epica_template, get_criterios_mejora_template, get_spike_template, get_historia_epica_template
 
 # Configurar la página
 st.set_page_config(page_title="AyudaPO", page_icon="🔗")
@@ -26,6 +26,8 @@ def generate_response(template_type="PO Casos exito"):
         template = get_criterios_mejora_template()
     elif template_seleccionado == "PO Definicion spike":
         template = get_spike_template()
+    elif template_seleccionado == "PO Definicion historia":
+        template = get_historia_epica_template()
 
     return template
 
@@ -43,7 +45,7 @@ max_tokens = st.sidebar.slider("Maximo de tokens", min_value=100, max_value=4096
 # Selecci贸n de template
 template_seleccionado = st.sidebar.selectbox(
     "Tipo de consulta",
-    options=["General", "PO Casos exito", "PO Definicion epica", "PO Definicion mejora tecnica", "PO Definicion spike", "Programador Python"],
+    options=["General", "PO Casos exito", "PO Definicion epica", "PO Definicion historia", "PO Definicion mejora tecnica", "PO Definicion spike", "Programador Python"],
     index=0  # por defecto: General
 )
 
