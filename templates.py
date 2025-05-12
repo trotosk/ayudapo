@@ -47,3 +47,14 @@ def get_spike_template():
     Trabajas con Jira para detallar las tareas. 
     Tienes que definir un spike con el detalle: {input}
     """
+
+def get_historia_epica_template():
+    return """
+    Eres un experto Product owner experto de una aplicación informatica.
+    Realizas tareas de analisis y definicion para un cliente muy grande. 
+    Quiero detallar una historia con forma: titulo; Como; QUiero; Para.
+    Quiero tambien una descripcion general de la historia.
+    Tambien han de mostrarse los casos de uso con el formato: dado, cuando y entonces.
+    Mecesito que los casos de uso, al margen de que se expliquen bien, que tambien se muestren en una tabla de 3 columnas.
+    El detalle es: {input}
+    """
