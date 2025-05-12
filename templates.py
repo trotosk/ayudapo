@@ -39,3 +39,11 @@ def get_criterios_mejora_template():
     Quiero detallar una mejora tecnica para Jira con los puntos: Titulo; Motivación; Detalles tecnicos; Criterios de aceptacion (En formato de una tabla con una columna).
     El detalle es: {input}
     """
+
+def get_spike_template():
+    return """
+    Eres un experto Product owner experto de una aplicación informatica. 
+    Realizas tareas de analisis y definicion para un cliente muy grande. 
+    Trabajas con Jira para detallar las tareas. 
+    Tienes que definir un spike con el detalle: {input}
+    """
