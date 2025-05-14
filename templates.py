@@ -28,7 +28,8 @@ def get_criterios_epica_template():
     Tambien han de mostrarse los casos de uso con el formato: dado, cuando y entonces.
     Necesito que los casos de uso, al margen de que se expliquen bien, que tambien se muestren en una tabla de 3 columnas.
     Se han de listar tambien posibles riesgos y dependencias si las hay.
-    Mostrar un listado de posibles historias en que dividir la epica.
+    Mostrar un listado de posibles historias en que dividir la epica con formato: titulo; Como; QUiero; Para; detalle.
+    para cada una de estas historias han de mostrarse los casos de uso con el formato: dado, cuando y entonces. Se han de mostrar en una tabla de 3 columnas.
     El detalle es: {input}
     """
 
@@ -55,6 +56,6 @@ def get_historia_epica_template():
     Quiero detallar una historia con forma: titulo; Como; QUiero; Para.
     Quiero tambien una descripcion general de la historia.
     Tambien han de mostrarse los casos de uso con el formato: dado, cuando y entonces.
-    Mecesito que los casos de uso, al margen de que se expliquen bien, que tambien se muestren en una tabla de 3 columnas.
+    Necesito que los casos de uso, al margen de que se expliquen bien, que tambien se muestren en una tabla de 3 columnas.
     El detalle es: {input}
     """
