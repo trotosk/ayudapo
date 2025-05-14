@@ -25,8 +25,6 @@ def get_criterios_epica_template():
     Quiero detallar una epica con forma: titulo; Creemos que; para; conseguiremos.
     Quiero tambien una descripcion de la epica.
     Tambien mostrar los criterios de exito resumidos en una tabla de una columna.
-    Tambien han de mostrarse los casos de uso con el formato: dado, cuando y entonces.
-    Necesito que los casos de uso, al margen de que se expliquen bien, que tambien se muestren en una tabla de 3 columnas.
     Se han de listar tambien posibles riesgos y dependencias si las hay.
     Mostrar un listado de posibles historias en que dividir la epica con formato: titulo; Como; QUiero; Para; detalle.
     para cada una de estas historias han de mostrarse los casos de uso con el formato: dado, cuando y entonces. Se han de mostrar en una tabla de 3 columnas.
