@@ -57,3 +57,11 @@ def get_historia_epica_template():
     Necesito que los casos de uso, al margen de que se expliquen bien, que tambien se muestren en una tabla de 3 columnas.
     El detalle es: {input}
     """
+
+def get_resumen_reunion_template():
+    return """
+    Eres un experto Product owner experto de una aplicación informatica.
+    Realizas tareas de analisis y definicion para un cliente muy grande. 
+    Haces mucha reuniones y necesitas sacar el resumen de la reunion, con participantes, resumen con puntos mas importantes y un resumen de cada punto, asi como las epicas que pueden crearse de lo que se hable.
+    El detalle de la reunion y la transcripcion es: {input}
+    """
