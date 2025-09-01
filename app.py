@@ -1,7 +1,7 @@
 import streamlit as st
 import anthropic
 import os
-from templates import get_general_template, get_code_template, get_criterios_Aceptacion_template, get_criterios_epica_template, get_criterios_mejora_template, get_spike_template, get_historia_epica_template, get_resumen_reunion_template
+from templates import get_general_template, get_code_template, get_criterios_Aceptacion_template, get_criterios_epica_template, get_criterios_mejora_template, get_spike_template, get_historia_epica_template, get_resumen_reunion_template, get_criterios_epica_only_history_template
 
 # Configurar la página
 st.set_page_config(page_title="AyudaPO", page_icon="🔗")
@@ -22,6 +22,8 @@ def generate_response(template_type="PO Casos exito"):
         template = get_code_template()
     elif template_seleccionado == "PO Definicion epica":
         template = get_criterios_epica_template()
+    elif template_seleccionado == "PO Definicion epica una historia":
+        template = get_criterios_epica_only_history_template()
     elif template_seleccionado == "PO Definicion mejora tecnica":
         template = get_criterios_mejora_template()
     elif template_seleccionado == "PO Definicion spike":
@@ -42,12 +44,12 @@ model = st.sidebar.selectbox(
 
   # Perimetros de generacion
 temperatura = st.sidebar.slider("Temperatura", min_value=0.0, max_value=1.0, value=0.7, step=0.1)
-max_tokens = st.sidebar.slider("Maximo de tokens", min_value=100, max_value=4096, value=1500, step=100)
+max_tokens = st.sidebar.slider("Maximo de tokens", min_value=100, max_value=4096, value=2000, step=100)
 
 # Selecci贸n de template
 template_seleccionado = st.sidebar.selectbox(
     "Tipo de consulta",
-    options=["General", "PO Casos exito", "PO Definicion epica", "PO Definicion historia", "PO Definicion mejora tecnica", "PO Definicion spike", "PO resumen reunion", "Programador Python"],
+    options=["General", "PO Casos exito", "PO Definicion epica", "PO Definicion epica una historia", "PO Definicion historia", "PO Definicion mejora tecnica", "PO Definicion spike", "PO resumen reunion", "Programador Python"],
     index=0  # por defecto: General
 )
 
@@ -104,4 +106,5 @@ if prompt := st.chat_input("Escribe tu mensaje..."):
 
         except Exception as e:
             st.error(f"❌ Error al llamar a la API: {e}")
+
 
